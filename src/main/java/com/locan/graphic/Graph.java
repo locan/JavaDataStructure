@@ -1,16 +1,20 @@
 package com.locan.graphic;
 
+import java.util.Iterator;
+
 /**
  * Created by luan on 2017/6/2.
  */
-public abstract class Graph {
+public interface Graph {
 
-    abstract public Integer V();
-    abstract public Integer E();
+    public Integer V();
+    public Integer E();
 
-    abstract public void addEdge(int v,int w);
+    public void addEdge(int v,int w);
 
-    abstract boolean hasEdge(int v,int w);
+    boolean hasEdge(int v,int w);
+
+    public GraphIterator iterator();
 
 
 }

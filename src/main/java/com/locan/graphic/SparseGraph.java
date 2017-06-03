@@ -49,6 +49,11 @@ public class SparseGraph implements Graph{
 
         m++;
     }
+
+
+    public GraphIterator iterator(){
+        return new Itr(this,n);
+    }
     @Override
     public boolean hasEdge(int v,int w){
         if(v>=n||w>=n){
@@ -63,12 +68,12 @@ public class SparseGraph implements Graph{
         return false;
     }
 
-    public class Iterator{
+    public class Itr implements GraphIterator{
         private SparseGraph graph;
         private int v;
         private int index;
 
-        public Iterator(SparseGraph graph,Integer v){
+        public Itr(SparseGraph graph,Integer v){
             this.graph = graph;
             this.v = v;
             this.index =0;
@@ -82,7 +87,12 @@ public class SparseGraph implements Graph{
             return -1;
         }
 
-        public int next(){
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        public Integer next(){
             index++;
             if(index<graph.g.get(v).size()){
                 return graph.g.get(v).get(index);

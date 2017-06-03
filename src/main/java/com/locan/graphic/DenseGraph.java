@@ -1,5 +1,7 @@
 package com.locan.graphic;
 
+import java.util.Iterator;
+
 /**
  * Created by luan on 2017/6/2.
  */
@@ -58,6 +60,42 @@ public class DenseGraph implements Graph{
         return g[v][w];
     }
 
+    public GraphIterator iterator(){
+        return new Itr(this,n);
+    }
+    public class Itr implements GraphIterator {
+        private DenseGraph graph;
+        private int v;
+        private int index;
+
+        public Itr(DenseGraph graph,Integer v){
+            this.graph = graph;
+            this.v = v;
+            this.index =0;
+        }
+
+        public int begin(){
+            index = -1;
+            return next();
+        }
+
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        public Integer next(){
+            for(index+=1;index<graph.V();index++){
+                if(graph.g[v][index])
+                    return index;
+            }
+            return -1;
+        }
+
+        public boolean end(){
+            return index>=graph.V();
+        }
+    }
 
 
 }

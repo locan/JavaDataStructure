@@ -1,6 +1,8 @@
 package com.locan.graphic;
 
 
+import java.util.Iterator;
+
 /**
  * Created by luan on 2017/6/2.
  */
@@ -10,6 +12,7 @@ public class Component<G extends Graph> {
 
     private boolean[] visited;
 
+    private Integer[] id;
     private Integer ccount;
 
 
@@ -18,12 +21,16 @@ public class Component<G extends Graph> {
 
         this.ccount = 0;
         visited = new boolean[this.graph.V()];
-        for(int i =0; i<graph.V();i++)
+        id = new Integer[this.graph.V()];
+        for(int i =0; i<graph.V();i++){
             visited[i] = false;
+            id[i] = -1;
+        }
+
 
         for(int i=0;i<graph.V();i++){
             if(!visited[i]){
-                //dfs(i);
+                dfs(i);
                 ccount++;
             }
         }
@@ -31,9 +38,31 @@ public class Component<G extends Graph> {
         //ArrayList
     }
 
+
+    private void dfs(int v){
+        visited[v] = true;
+        id[v] = ccount;
+        GraphIterator iterator = graph.iterator();
+
+        for(int i=iterator.begin();!iterator.end();i = iterator.next()){
+            if(!visited[i]){
+                dfs(i);
+            }
+        }
+
+    }
     public int count(){
         return ccount;
     }
 
+
+    public boolean isConnection(int v,int w){
+        if(v<0||v>=graph.V())
+            return false;
+        if(w<0||w>=graph.V())
+            return false;
+
+        return id[v] == id[w];
+    }
 
 }
