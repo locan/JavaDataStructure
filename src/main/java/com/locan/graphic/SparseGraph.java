@@ -51,8 +51,8 @@ public class SparseGraph implements Graph{
     }
 
 
-    public GraphIterator iterator(){
-        return new Itr(this,n);
+    public GraphIterator iterator(int v){
+        return new Itr(this,v);
     }
     @Override
     public boolean hasEdge(int v,int w){

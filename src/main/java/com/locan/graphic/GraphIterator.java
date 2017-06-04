@@ -7,10 +7,7 @@ import java.util.Iterator;
  */
 public interface GraphIterator extends Iterator{
     public int begin();
-
     public boolean hasNext();
-
     public Integer next();
-
     public boolean end();
 }

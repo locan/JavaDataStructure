@@ -1,9 +1,7 @@
 package com.locan.graphic;
 
-
-import java.util.Iterator;
-
 /**
+ * 这个类中完成的图的深度遍历，并且使用深度遍历的方法对图进行判断 连通图的个数
  * Created by luan on 2017/6/2.
  */
 public class Component<G extends Graph> {
@@ -34,15 +32,13 @@ public class Component<G extends Graph> {
                 ccount++;
             }
         }
-
-        //ArrayList
     }
 
 
     private void dfs(int v){
         visited[v] = true;
         id[v] = ccount;
-        GraphIterator iterator = graph.iterator();
+        GraphIterator iterator = graph.iterator(v);
 
         for(int i=iterator.begin();!iterator.end();i = iterator.next()){
             if(!visited[i]){

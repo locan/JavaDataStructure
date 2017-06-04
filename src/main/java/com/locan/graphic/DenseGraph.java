@@ -60,8 +60,8 @@ public class DenseGraph implements Graph{
         return g[v][w];
     }
 
-    public GraphIterator iterator(){
-        return new Itr(this,n);
+    public GraphIterator iterator(int v){
+        return new Itr(this,v);
     }
     public class Itr implements GraphIterator {
         private DenseGraph graph;
