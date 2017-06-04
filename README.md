@@ -4,7 +4,7 @@
 > 主要参考的书籍《数据结构与算法分析》
 ### 二叉树搜索树
 ```java
-public interface BST{
+public interface BST<AnyType>{
     /*置空二叉树*/
     public void makeEmpty();
     /*判断二叉树是否为空*/
